@@ -9,6 +9,8 @@ install:
 script:
   - make test
 
+branches: master
+
 matrix:
   fast_finish: true
   include:
