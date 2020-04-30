@@ -10,8 +10,16 @@ from features.util import launch_lxd_container, lxc_exec
 CONTAINER_PREFIX = "behave-test-"
 
 
-@given("a `{series}` lxd container with ubuntu-advantage-tools installed")
-def given_a_lxd_container(context, series):
+@given("a series lxd container with ubuntu-advantage-tools installed")
+def given_a_lxd_container(context):
+    assert context.table, "ENSURE: table is provided."
+    for row in context.table.rows:
+        print (row)
+    table_series = [ row["series"]    for row in context.table ]
+    print('type of ', type(table_series))
+    print(table_series)
+    series = context.current_series
+    print('current ', series)
     if series in context.reuse_container:
         context.container_name = context.reuse_container[series]
     else:

@@ -148,13 +148,17 @@ def before_scenario(context: Context, scenario: Scenario):
     then capture an image. This image is then reused by each scenario, reducing
     test execution time.
     """
+    print ('\n\n@before_scenario')
+    print ('@before_sc context.series_image_name: ', context.series_image_name)
     for tag in scenario.effective_tags:
         parts = tag.split(".")
         if parts[0] == "series":
             series = parts[1]
+            context.current_series = series
             if series not in context.series_image_name:
                 create_uat_lxd_image(context, series)
-
+    print ('\n\n ??? current_series/context: ,', context.current_series)
+    print ('@before_sc FIM context.series_image_name: ', context.series_image_name)
 
 def after_all(context):
     if context.config.image_clean:
