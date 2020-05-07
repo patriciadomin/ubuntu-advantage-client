@@ -6,6 +6,9 @@ Feature: Unattached status
         When I run `ua status` as non-root
         Then I will see the following on stdout:
             """
+            *************************************************************
+            introducing an error just to test notifications on travis CI
+            *************************************************************
             SERVICE       AVAILABLE  DESCRIPTION
             cc-eal        no         Common Criteria EAL2 Provisioning Packages
             esm-apps      no         UA Apps: Extended Security Maintenance
