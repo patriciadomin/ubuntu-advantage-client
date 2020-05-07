@@ -82,4 +82,8 @@ matrix:
           - sudo lxd init --auto
           - sudo usermod -a -G lxd $USER
           - sg lxd -c 'make test'
-   
+  if: (type = cron)
+  notifications:
+    email:
+      - patricia.domingues@canonical.com
+    on_success: success
