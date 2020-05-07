@@ -69,7 +69,8 @@ matrix:
       env: TOXENV=mypy
     - python: 3.7
       env: TOXENV=black
-  allow_failures:
+    if: (NOT type = cron)
+    allow_failures:
     - python: 3.7
       env: TOXENV=behave
       script:
@@ -81,3 +82,4 @@ matrix:
           - sudo lxd init --auto
           - sudo usermod -a -G lxd $USER
           - sg lxd -c 'make test'
+   
