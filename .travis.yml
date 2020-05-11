@@ -85,5 +85,7 @@ matrix:
   if: (type = cron)                                                                                                                         
   notifications:
     email:
-      - patricia.domingues@canonical.com
-    on_success: always
+      recipients: 
+        - patricia.domingues@canonical.com
+        - patricia.sdomin@gmail.com
+      on_success: always
