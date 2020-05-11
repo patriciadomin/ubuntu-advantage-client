@@ -9,6 +9,14 @@ install:
 script:
   - make test
 
+if: (type = cron)
+notifications:
+  email:
+    recipients:
+      - patricia.domingues@canonical.com
+      - patricia.sdomin@gmail.com
+    on_success: always #default is change
+
 matrix:
   fast_finish: true
   include:
@@ -81,11 +89,3 @@ matrix:
           - sudo lxd init --auto
           - sudo usermod -a -G lxd $USER
           - sg lxd -c 'make test'
-
-if: (type = cron)
-notifications:
-  email:
-    recipients:
-      - patricia.domingues@canonical.com
-      - patricia.sdomin@gmail.com
-    on_success: always #default is change
