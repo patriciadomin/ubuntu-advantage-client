@@ -82,10 +82,10 @@ matrix:
           - sudo usermod -a -G lxd $USER
           - sg lxd -c 'make test'
 
-  if: (type = cron)
-  notifications:
-    email:
-      recipients:
-        - patricia.domingues@canonical.com
-        - patricia.sdomin@gmail.com
-      on_success: always #default is change
+if: (type = cron)
+notifications:
+  email:
+    recipients:
+      - patricia.domingues@canonical.com
+      - patricia.sdomin@gmail.com
+    on_success: always #default is change
