@@ -86,4 +86,4 @@ matrix:
   notifications:
     email:
       - patricia.domingues@canonical.com
-    on_success: success
+    on_success: always
