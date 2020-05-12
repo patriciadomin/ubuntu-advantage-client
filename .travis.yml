@@ -9,6 +9,12 @@ install:
 script:
   - make test
 
+if: (type IN (cron, api)) OR (branch = travis_type)
+notifications:
+  email:
+    - patricia.domingues@canonical.com
+  on_success: always
+
 matrix:
   fast_finish: true
   include:
@@ -81,9 +87,3 @@ matrix:
           - sudo lxd init --auto
           - sudo usermod -a -G lxd $USER
           - sg lxd -c 'make test'
-
-  if: (type IN (cron, api)) OR (branch = travis_type)
-  notifications:
-    email:
-      - patricia.domingues@canonical.com
-    on_success: always
