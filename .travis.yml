@@ -9,15 +9,15 @@ install:
 script:
   - make test
 
-
-matrix:
-  if: (type = cron)
+if: (type = cron)
   notifications:
     email:
       recipients:
         - patricia.domingues@canonical.com
         - patriciadmp@hotmail.com
-      on_success: always #default is change
+    on_success: always #default is change
+
+matrix:
 
   fast_finish: true
   include:
