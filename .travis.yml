@@ -16,7 +16,7 @@ matrix:
     email:
       recipients:
         - patricia.domingues@canonical.com
-        - patricia.sdomin@gmail.com
+        - patriciadmp@hotmail.com
       on_success: always #default is change
 
   fast_finish: true
