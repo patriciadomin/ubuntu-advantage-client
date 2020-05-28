@@ -33,7 +33,10 @@ matrix:
           - sudo snap install lxd
           - sudo lxd init --auto
           - sudo usermod -a -G lxd $USER
-          - if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then UACLIENT_BEHAVE_BUILD_PR=0; fi
+          - >
+             if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then
+                 UACLIENT_BEHAVE_BUILD_PR=0;
+             fi
           - echo 'after if .... travis_build_PR: ' $UACLIENT_BEHAVE_BUILD_PR
           - sg lxd -c '$UACLIENT_BEHAVE_BUILD_PR make test'
     - env:
