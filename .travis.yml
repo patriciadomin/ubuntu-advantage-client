@@ -9,15 +9,16 @@ install:
 script:
   - make test
 
-if: (type = cron)
+
+matrix:
+  if: (type = cron)
   notifications:
     email:
       recipients:
         - patricia.domingues@canonical.com
         - patriciadmp@hotmail.com
-    on_success: always #default is change
+      on_success: always #default is change
 
-matrix:
   fast_finish: true
   include:
     - python: 3.7
@@ -25,7 +26,6 @@ matrix:
       script:
           # bionic has lxd from deb installed, remove it first to avoid
           # confusion over versions
-          - echo $TRAVIS_EVENT_TYPE
           - sudo apt-get remove --yes --purge lxd lxd-client
           - sudo rm -Rf /var/lib/lxd
           - sudo snap install lxd
@@ -78,3 +78,15 @@ matrix:
       env: TOXENV=mypy
     - python: 3.7
       env: TOXENV=black
+  allow_failures:
+    - python: 3.7
+      env: TOXENV=behave
+      script:
+          # bionic has lxd from deb installed, remove it first to avoid
+          # confusion over versions
+          - sudo apt-get remove --yes --purge lxd lxd-client
+          - sudo rm -Rf /var/lib/lxd
+          - sudo snap install lxd
+          - sudo lxd init --auto
+          - sudo usermod -a -G lxd $USER
+          - sg lxd -c 'make test'
