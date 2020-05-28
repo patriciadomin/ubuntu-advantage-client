@@ -106,9 +106,7 @@ def before_all(context: Context) -> None:
     context.series_reuse_image = ""
     context.reuse_container = {}
     context.config = UAClientBehaveConfig.from_environ()
-
     print ('\n\n ***** build_pr from travis: ', os.environ.get('UACLIENT_BEHAVE_BUILD_PR'))
-
     if context.config.reuse_image:
         series = lxc_get_series(context.config.reuse_image, image=True)
         if series is not None:
