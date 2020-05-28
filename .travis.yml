@@ -27,6 +27,8 @@ matrix:
           # bionic has lxd from deb installed, remove it first to avoid
           # confusion over versions
           - echo $TRAVIS_EVENT_TYPE
+          - UACLIENT_BEHAVE_BUILD_PR=1
+          - echo $UACLIENT_BEHAVE_BUILD_PR
           - sudo apt-get remove --yes --purge lxd lxd-client
           - sudo rm -Rf /var/lib/lxd
           - sudo snap install lxd
