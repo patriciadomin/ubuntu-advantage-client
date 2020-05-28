@@ -30,6 +30,7 @@ matrix:
           - UACLIENT_BEHAVE_BUILD_PR=1
           - echo $UACLIENT_BEHAVE_BUILD_PR
           - if [ "$TRAVIS_EVENT_TYPE" == "push" ]; then UACLIENT_BEHAVE_BUILD_PR=0; fi
+          - echo $UACLIENT_BEHAVE_BUILD_PR
           - sudo apt-get remove --yes --purge lxd lxd-client
           - sudo rm -Rf /var/lib/lxd
           - sudo snap install lxd
