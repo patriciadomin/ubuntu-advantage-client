@@ -91,4 +91,3 @@ matrix:
       env: TOXENV=mypy
     - python: 3.7
       env: TOXENV=black
->>>>>>> travis_email_rec
