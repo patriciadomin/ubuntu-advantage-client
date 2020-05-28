@@ -27,7 +27,7 @@ matrix:
           # confusion over versions
           - echo $TRAVIS_EVENT_TYPE
           - UACLIENT_BEHAVE_BUILD_PR=1
-          - echo 'travis_build_PR: ' $UACLIENT_BEHAVE_BUILD_PR
+          - echo $UACLIENT_BEHAVE_BUILD_PR
           - sudo apt-get remove --yes --purge lxd lxd-client
           - sudo rm -Rf /var/lib/lxd
           - sudo snap install lxd
