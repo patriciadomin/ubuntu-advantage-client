@@ -1,12 +1,3 @@
-if: type = cron
-notifications:
-  email:
-    # This overrides the default of sending to the committer and author.
-    recipients:
-      - patricia.domingues@canonical.com
-      - patricia.sdomin@gmail.com
-    on_success: always
-
 language: python
 dist: bionic
 
@@ -102,3 +93,14 @@ matrix:
           - sudo lxd init --auto
           - sudo usermod -a -G lxd $USER
           - sg lxd -c 'make test'
+
+if: type = cron
+notifications:
+  email:
+    # This overrides the default of sending to the committer and author.
+    recipients:
+      - patricia.domingues@canonical.com
+      - patricia.sdomin@gmail.com
+    on_success: always
+
+
