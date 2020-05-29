@@ -1,4 +1,4 @@
-- if: type = cron
+if: type = cron
 notifications:
   email:
     # This overrides the default of sending to the committer and author.
