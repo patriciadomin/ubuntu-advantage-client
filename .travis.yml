@@ -94,8 +94,8 @@ matrix:
           - sudo usermod -a -G lxd $USER
           - sg lxd -c 'make test'
 
-if: type = cron
 notifications:
+if: type = cron
   email:
     # This overrides the default of sending to the committer and author.
     recipients:
