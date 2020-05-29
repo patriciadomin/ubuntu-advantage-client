@@ -1,5 +1,5 @@
 language: python
-dist: bionic
+dist: focal
 
 install:
   # Required so `git describe` will definitely find a tag; see
