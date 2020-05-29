@@ -1,6 +1,14 @@
 language: python
 dist: focal
 
+if: (type = cron)
+  notifications:
+    email:
+      recipients:
+        - patricia.domingues@canonical.com
+      on_success: always #default is change
+
+
 install:
   # Required so `git describe` will definitely find a tag; see
   # https://github.com/travis-ci/travis-ci/issues/7422
@@ -8,13 +16,6 @@ install:
   - make testdeps
 script:
   - make test
-
-if: (type = cron)
-  notifications:
-    email:
-      recipients:
-        - patricia.domingues@canonical.com
-      on_success: always #default is change
 
 matrix:
   fast_finish: true
